@@ -80,3 +80,4 @@ The GraphQL boilerplates are maintained by the GraphQL community, with official 
 Your feedback is **very helpful**, please share your opinion and thoughts! If you have any questions or want to contribute yourself, join the [`#graphql-boilerplate`](https://graphcool.slack.com/messages/graphql-boilerplate) channel on our [Slack](https://graphcool.slack.com/).
 # prisma-store
 # store
+# store
