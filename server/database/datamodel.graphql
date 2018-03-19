@@ -1,0 +1,21 @@
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  pw: String!
+  cart: Cart
+}
+type Cart{
+    id: ID! @unique
+    user: User!
+    product: [Product!]!
+}
+type Product{
+  id: ID! @unique
+  name: String! @unique
+  imgURL: String
+  desc: String!
+  price: Float!
+  quantity: Int
+}
+

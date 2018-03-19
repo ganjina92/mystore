@@ -1,0 +1,44 @@
+.flexBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+}
+
+h3, h2 {
+  color: darkred;
+}
+section {
+  flex-wrap: wrap;
+  flex-flow: row;
+  display: flex;
+}
+.flex-container {
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-between;
+  align-items: center;
+}
+.myUpdate {
+  display: flex;
+  justify-content: space-around;
+}
+.myButton {
+  display: flex;
+  justify-content: center;
+}
+.carPic {
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+
+}
+.product {
+  border: solid 1px pink ;
+  padding: 20px;
+  margin: 3px;
+}
+.desc {
+  border: none;
+}

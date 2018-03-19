@@ -1,0 +1,25 @@
+# import Post from "./generated/prisma.graphql"
+
+type Query {
+  user(id: ID!): User
+  product(id: ID!): Product
+  cart(user_id: ID!): Cart
+  allProducts: [Product]
+  allUsers: [User]
+
+}
+type Mutation {
+  createUser(name: String!, email: String!, pw: String!): User
+  updateUser(id: ID!, name: String, email: String): User
+  createProduct(name: String!,imgURL: String, desc: String!,price: Float!,quantity: Int):Product
+  addProductToCart(user_id: ID!, product_id: ID!): User
+  deleteProduct(id: ID!): Product
+  updateProduct(id: ID!,name: String,imgURL: String,desc: String,price: Float, quantity: Int):Product
+  removeProductFromCart(id: ID!, product_id: ID!): Cart
+  clearCart(id: ID!): User
+  login(email: String!, pw: String!): AuthPayload
+}
+type AuthPayload {
+  token: String!
+  user: User!
+}

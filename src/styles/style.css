@@ -1,0 +1,19 @@
+.tile {
+  margin: 10px;
+  padding: 20px;
+}
+.list {
+  border-style: solid;
+  margin: 20px;
+  padding: 10px;
+}
+
+img {
+  width: 40%;
+  height: 40%;
+}
+.myAdd {
+  background-color: darkred;
+  height: 20px;
+  width: 40px;
+}
