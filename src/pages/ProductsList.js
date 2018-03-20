@@ -12,7 +12,7 @@ export default class extends Component {
   render () {
     return (
       <MuiThemeProvider>
-      <AppBar title="Welcome We've been Expecting You"/>
+      <AppBar title="Need a Ride? Got You Covered"/>
         <ModalButton label='Add Product' display={<CreateProduct/>}/>
         <AllProducts/>
       </MuiThemeProvider>

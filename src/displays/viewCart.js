@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import CartProductList from '../components/cart/cart'
+import CartProductList from '../components/cart/Cart'
 import CheckoutButton from '../components/cart/checkoutButton'
 import ClearCartButton from '../components/cart/clearCartButton'
 

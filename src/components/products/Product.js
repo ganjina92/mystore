@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import {ModalButton} from '../buttons'
 import '../../styles/CreateProduct.css'
 import UpdateProduct from '../forms/UpdateProduct'
+import CreateCartProduct from '../forms/CreateCartProduct'
 
 
 class Product extends Component {
@@ -39,6 +40,7 @@ class Product extends Component {
           <textarea rows="2" cols="25" className="desc" readOnly >{product.desc}</textarea>
         <div> {product.quantity}</div>
         <div className="myUpdate">
+          <CreateCartProduct/>
           <ModalButton label="Update" display={<UpdateProduct product={product}/>} />
           <ModalButton label="Delete" display={DeleteProduct (product)} />
        </div>

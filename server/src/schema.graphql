@@ -6,19 +6,23 @@ type Query {
   cart(user_id: ID!): Cart
   allProducts: [Product]
   allUsers: [User]
-
+  allProductsInCart(cartID: ID!): [CartProduct]
 }
+
 type Mutation {
   createUser(name: String!, email: String!, pw: String!): User
-  updateUser(id: ID!, name: String, email: String): User
   createProduct(name: String!,imgURL: String, desc: String!,price: Float!,quantity: Int):Product
-  addProductToCart(user_id: ID!, product_id: ID!): User
-  deleteProduct(id: ID!): Product
+  createCart (products: ID!): Cart
+  createCartProduct (product: ID!, quantity: Int!) : CartProduct
   updateProduct(id: ID!,name: String,imgURL: String,desc: String,price: Float, quantity: Int):Product
-  removeProductFromCart(id: ID!, product_id: ID!): Cart
-  clearCart(id: ID!): User
+  updateUser(id: ID!, name: String, email: String): User
+  updateCart(id: ID!, product: ID!,isAddition: Boolean!): User
+  updateCartProduct(id: ID!, quantity: Int!): CartProduct
+  deleteProduct(id: ID!): Product
+  deleteCartProduct(id: ID!): CartProduct
   login(email: String!, pw: String!): AuthPayload
 }
+
 type AuthPayload {
   token: String!
   user: User!

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Cart from './components/cart/cart'
+import Cart from './components/cart/Cart'
 
 import ProductsList from './pages/ProductsList'
 

@@ -6,16 +6,21 @@ type User {
   cart: Cart
 }
 type Cart{
-    id: ID! @unique
-    user: User!
-    product: [Product!]!
+  id: ID! @unique
+  products: [CartProduct!]! @relation (name: "Products")
 }
+
+type CartProduct {
+id: ID! @unique
+product: Product! @relation( name: "ProductInCart")
+quantity: Int!
+}
+
 type Product{
   id: ID! @unique
   name: String! @unique
   imgURL: String
   desc: String!
   price: Float!
-  quantity: Int
-}
 
+}
