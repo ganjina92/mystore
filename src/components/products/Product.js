@@ -1,66 +1,94 @@
 import React, {Component} from 'react'
 import Paper from 'material-ui/Paper'
 import gql from 'graphql-tag'
-import {graphql} from 'react-apollo'
+import {graphql , compose} from 'react-apollo'
 import RaisedButton from 'material-ui/RaisedButton'
+import IconButton from 'material-ui/IconButton'
 
 import {ModalButton} from '../buttons'
-import '../../styles/CreateProduct.css'
+import NumberFormat from 'react-number-format'
+// import '../../styles/CreateProduct.css'
 import UpdateProduct from '../forms/UpdateProduct'
-import CreateCartProduct from '../forms/CreateCartProduct'
+import RemoveShoppingCartIcon from 'material-ui-icons/RemoveShoppingCart'
 
+import {user_id} from '../../config/auth'
 
 class Product extends Component {
   render(){
-    
-    const {product} = this.props
-    
-    const DeleteProduct = () =>(
-        <RaisedButton label="Confirm Delete"
-                      onClick={handleClick}
-        />
-    )
+    const {addToCart, removeFromCart, product} = this.props
+    console.log(product)
   
-    const AddToCart = () =>(
-      <RaisedButton label="Add To Cart"
-                    onClick={handleClick}
-      />
-    )
-    
-    const handleClick = async (e) => {
-      e.preventDefault()
-      await this.props.mutate()
-      window.location.replace('/')
+    const AddToCart = async () => {
+      await addToCart({variables:{product_id:product.id}}).then(r => console.log(r))
+      window.location.replace('/cart')
+    }
+    const RemoveFromCart = async () => {
+      await removeFromCart({variables:{product_id: product.cart_product_id}}).then(r => console.log(r))
+      window.location.replace('/cart')
     }
     return(
-      <Paper className='product'>
-        <img src={product.imgURL}  className="carPic" alt={'Not Available'}/>
+      <Paper className='product' zDepth={4}>
         <h2>{product.name}</h2>
-        <div>${product.price}</div>
-          <textarea rows="2" cols="25" className="desc" readOnly >{product.desc}</textarea>
-        <div> {product.quantity}</div>
-        <div className="myUpdate">
-          <CreateCartProduct/>
-          <ModalButton label="Update" display={<UpdateProduct product={product}/>} />
-          <ModalButton label="Delete" display={DeleteProduct (product)} />
-       </div>
-        <br/>
-       <div className="myButton">
-         <ModalButton label=" Add To Cart" display={AddToCart (product)}/>
-       </div>
+        <img src={product.imgURL} className="carPic" alt={'Not Available'}/>
+        <NumberFormat value={product.price} displayType={'text'} thousandSeparator={true} prefix={'$'} />
+          <p className='desc'>{product.desc}</p>
+        
+        {this.props.cartView?
+          <div>
+            <IconButton onClick={() => RemoveFromCart()}><RemoveShoppingCartIcon/></IconButton>
+            <div>Quantity:{product.quantity}</div>
+          </div>
+          :
+          <div>
+          <ModalButton className="myUpdate" label="Update" primary='true'
+                         display={<UpdateProduct product={product}/>}/>
+          
+         <RaisedButton className="myAddButton" primary='true'
+                       label=" Add To Cart"
+                       onClick={() => AddToCart()}/>
+          </div>
+        }
       </Paper>
     )
   }
 }
-const DELETE_PRODUCT_MUTATION = gql`
- mutation ($id: ID!) {
- deleteProduct(
-   id: $id
- ){
-    id
+const ADD_TO_CART = gql`
+  mutation($user_id:ID!, $product_id:ID!){
+    addProductToCart(
+      user_id: $user_id
+      product_id: $product_id
+    ){
+      cart{
+        id
+        products{
+          product{
+            id
+            name
+          }
+        }
+      }
+    }
   }
- }
 `
- export default graphql(DELETE_PRODUCT_MUTATION,
-  {options: (props) => ({variables: {id: props.product.id}})}
+const REMOVE_FROM_CART = gql`
+  mutation($user_id:ID!, $product_id:ID!){
+    removeProductFromCart(
+      user_id: $user_id
+      product_id: $product_id
+    ){
+      cart {
+        id
+        products{
+          product{
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`
+export default compose(
+  graphql(ADD_TO_CART,{name:'addToCart', options: () => ({variables:{user_id}})}),
+  graphql(REMOVE_FROM_CART,{name:'removeFromCart', options: () => ({variables:{user_id}})})
 )(Product)

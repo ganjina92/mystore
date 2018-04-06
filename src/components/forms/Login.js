@@ -3,7 +3,7 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import {login} from '../../config/auth'
 
-class LoginForm extends Component {
+export default class extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -20,10 +20,8 @@ class LoginForm extends Component {
       }}>
         <TextField required floatingLabelText={`Email`} onChange={(e) => this.setState({ email: e.target.value })} />
         <TextField required type='password' floatingLabelText={`Password`} onChange={(e) => this.setState({ pw: e.target.value})} />
-        <RaisedButton label='Enter' type='submit' />
+        <RaisedButton label='Login' type='submit' />
       </form>
     )
   }
 }
-
-export default (LoginForm)

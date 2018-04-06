@@ -10,9 +10,10 @@ h3, h2 {
   color: darkred;
 }
 section {
+  display: flex;
   flex-wrap: wrap;
   flex-flow: row;
-  display: flex;
+
 }
 .flex-container {
   -webkit-flex-flow: row wrap;
@@ -22,17 +23,25 @@ section {
 }
 .myUpdate {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
-.myButton {
+.myAddButton {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 .carPic {
   height: 100px;
   margin: 0 auto;
   display: block;
 
+}
+.carPic:hover {
+  box-shadow: 0 0 1px 1px rgba(0, 140, 186, 0.5);
+  -webkit-transform: scale(3,3);
+}
+
+.modal {
+  display: flex;
 }
 .product {
   border: solid 1px pink ;
@@ -41,4 +50,12 @@ section {
 }
 .desc {
   border: none;
+  height: 75px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.addShoppingCart {
+  display: flex;
+  justify-self: flex-start;
 }

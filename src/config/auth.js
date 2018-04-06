@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import {apollo} from './apollo'
-import jwt from 'jsonwebtoken'
 import * as Storage from './localStorage'
+import jwt from 'jsonwebtoken'
 
 export let user_id = ''
 
@@ -31,9 +31,9 @@ export const login = async (email,pw) => {
     }})
   .then((r) => {
     Storage.save('token', r.data.login.token)
-    window.location.replace('/')
+    window.location.replace(`/users/${r.data.login.user.id}`)
   })
-  .catch(err => console.log(err))
+  .catch(err => {console.log(err)})
 }
 
 export const logout = () => {
@@ -42,12 +42,11 @@ export const logout = () => {
       apollo.resetStore()
       Storage.reset()
       alert('logged out')
-       window.location.replace('/')
+      window.location.replace('/')
     })
     .catch(err => console.error('Logout failed', err))
 }
 
-//returns boolean based on whether a login token is present in local storage
 export const isAuthenticated = () => {
   try {
     if (!Storage.itemByKey('token')) return false

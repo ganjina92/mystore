@@ -4,23 +4,25 @@ type User {
   email: String! @unique
   pw: String!
   cart: Cart
+  avatar: String
 }
-type Cart{
+
+type Cart {
   id: ID! @unique
-  products: [CartProduct!]! @relation (name: "Products")
+  user: User
+  products: [CartProduct!]!
 }
 
 type CartProduct {
-id: ID! @unique
-product: Product! @relation( name: "ProductInCart")
-quantity: Int!
+  id: ID! @unique
+  cart: Cart!
+  product: Product!
 }
 
-type Product{
+type Product {
   id: ID! @unique
   name: String! @unique
   imgURL: String
   desc: String!
   price: Float!
-
 }

@@ -4,22 +4,23 @@ type Query {
   user(id: ID!): User
   product(id: ID!): Product
   cart(user_id: ID!): Cart
+  cartProduct(id:ID!): CartProduct
   allProducts: [Product]
   allUsers: [User]
-  allProductsInCart(cartID: ID!): [CartProduct]
+  allProductsInCart(cart_id:ID!):[Product]
 }
 
 type Mutation {
-  createUser(name: String!, email: String!, pw: String!): User
-  createProduct(name: String!,imgURL: String, desc: String!,price: Float!,quantity: Int):Product
-  createCart (products: ID!): Cart
-  createCartProduct (product: ID!, quantity: Int!) : CartProduct
-  updateProduct(id: ID!,name: String,imgURL: String,desc: String,price: Float, quantity: Int):Product
+  createUser(name: String!, email: String!, pw: String!, avatar: String): User
   updateUser(id: ID!, name: String, email: String): User
-  updateCart(id: ID!, product: ID!,isAddition: Boolean!): User
-  updateCartProduct(id: ID!, quantity: Int!): CartProduct
+  createProduct(name: String!,imgURL: String,desc: String!,price: Float!):Product
+  updateProduct(id: ID!,name: String,imgURL: String,desc: String,price: Float ):Product
   deleteProduct(id: ID!): Product
-  deleteCartProduct(id: ID!): CartProduct
+
+  addProductToCart(user_id: ID!, product_id: ID!): User
+  removeProductFromCart(user_id: ID!, product_id: ID!): User
+  clearCart(user_id: ID!): User
+
   login(email: String!, pw: String!): AuthPayload
 }
 

@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import gql from 'graphql-tag'
 import {graphql} from 'react-apollo'
 import TextField from 'material-ui/TextField'
-import { Button } from 'reactstrap'
+import RaisedButton from 'material-ui/RaisedButton'
+import NumberFormat from 'react-number-format'
 
 import '../../styles/CreateProduct.css'
 
@@ -13,8 +14,7 @@ class UpdateProduct extends Component {
       name: props.product.name,
       imgURL: props.product.imgURL,
       desc: props.product.desc,
-      price: props.product.price,
-      quantity: props.product.quantity
+      price: props.product.price
     }
   }
   render () {
@@ -25,9 +25,7 @@ class UpdateProduct extends Component {
           name:this.state.name,
           imgURL: this.state.imgURL,
           desc: this.state.desc,
-          price: this.state.price,
-          quantity: this.state.quantity
-          
+          price: this.state.price
         }
         
       })
@@ -51,34 +49,30 @@ class UpdateProduct extends Component {
                    onChange={e => this.setState({ desc: e.target.value})}
                    
         />
-        <TextField required floatingLabelText="Quantity"
-                   value={this.state.quantity}
-                   onChange={e => this.setState({ quantity: e.target.value})}
-  
-        />
-        <TextField required floatingLabelText="Price"
-                   value={this.state.price}
-                   onChange={e => this.setState({ price: e.target.value})}
-                   type="number"
-                   min='$ 0,000[.]00' step="$1,000[.]00" max='100,000,000[.]00'
-        />
-        <Button
-                      label="Create"
+        <div>
+        <NumberFormat customInput={TextField} thousandSeparator={true} prefix={'$'}
+                      value={this.state.price}
+                      onValueChange={e => this.setState({ price: e.target.value})}
+                      min="0.00" step="1000.00" max="30000000.00"/>
+         
+        </div>
+        <RaisedButton primary='true'
+                      label="Update"
                       type="Submit"
         />
+        
       </form>
     );
   }
 }
 const UPDATE_PRODUCT_MUTATION = gql`
-  mutation($id: ID!, $name:String, $imgURL:String, $desc:String, $price: Float!){
+  mutation($id: ID!, $name:String, $imgURL:String, $desc:String, $price: Float){
     updateProduct(
       id: $id,
       name: $name,
       imgURL: $imgURL,
       desc: $desc,
-      price: $price,
-      quantity: $quantity
+      price: $price
     ){
       id
     }
