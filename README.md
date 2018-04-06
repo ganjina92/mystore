@@ -81,3 +81,4 @@ Your feedback is **very helpful**, please share your opinion and thoughts! If yo
 # prisma-store
 # store
 # store
+# simple-store
