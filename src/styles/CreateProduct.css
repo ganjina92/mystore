@@ -9,6 +9,9 @@
 h3, h2 {
   color: darkred;
 }
+.product {
+  background: blanchedalmond;
+}
 section {
   display: flex;
   flex-wrap: wrap;
@@ -21,14 +24,7 @@ section {
   align-content: space-between;
   align-items: center;
 }
-.myUpdate {
-  display: flex;
-  justify-content: flex-start;
-}
-.myAddButton {
-  display: flex;
-  justify-content: flex-end;
-}
+
 .carPic {
   height: 100px;
   margin: 0 auto;
@@ -55,7 +51,7 @@ section {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.addShoppingCart {
-  display: flex;
-  justify-self: flex-start;
-}
+/*.addShoppingCart {*/
+  /*display: flex;*/
+  /*justify-self: flex-start;*/
+/*}*/

@@ -3,38 +3,36 @@ import {Link} from 'react-router-dom'
 import gql from 'graphql-tag'
 import {graphql} from 'react-apollo'
 import HomeIcon from 'material-ui-icons/Home'
+import '../styles/style.css'
 
-/*import Avatar from 'material-ui/Avatar';
-import FileFolder from 'material-ui/svg-icons/file/folder';
-import FontIcon from 'material-ui/FontIcon';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';*/
+
 
 class User extends Component {
   constructor(props){
     super(props)
     this.state = {
       name: '',
-      email: '',
-      avatar: ''
+      email: ''
     }
   }
   componentWillReceiveProps(nextProps){
     if(!nextProps.data.loading){
       return this.setState({
         name: nextProps.data.user.name,
-        email: nextProps.data.user.email,
-        avatar: nextProps.data.user.avatar
+        email: nextProps.data.user.email
       })
     }
   }
   render() {
     return (
       <div>
+      <div>
         <Link to="/"><HomeIcon/></Link>
+      </div>
+      <h1>Welcome To The Store, Where Everyone Can Afford Any Car!!!</h1><hr/>
         <h2>{this.state.name}</h2>
         <h2>{this.state.email}</h2>
-        
+
       </div>
     );
   }

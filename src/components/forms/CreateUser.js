@@ -25,12 +25,9 @@ class CreateUser extends Component {
         pw: this.state.pw
       }
     })
-    // await alert(`Welcome New User!`)
     window.location.replace(`/users/${userID.data.createUser.id}`)
   }
-  
-  
-    return (
+  return (
       <form className= 'flexBox'
         onSubmit={submitUser}>
         <TextField required floatingLabelText={`Name`} onChange={e => this.setState({ name: e.target.value })} />
@@ -51,7 +48,8 @@ const CREATE_USER_MUTATION = gql`
     createUser(
       name: $name,
       email: $email,
-      pw: $pw
+      pw: $pw,
+      
     ){
       id
     }

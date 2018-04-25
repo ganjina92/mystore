@@ -4,7 +4,9 @@
     "start": "nodemon src/index.js",
     "playground": "prisma playground",
     "dev": "npm-run-all --parallel start playground",
-    "prisma": "prisma"
+    "prisma": "prisma",
+    "deploy": "now . --public -e NODE_ENV=production"
+
   },
   "dependencies": {
     "bcrypt": "^1.0.3",

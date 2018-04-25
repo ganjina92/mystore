@@ -6,6 +6,7 @@ import {user_id} from '../../config/auth'
 import Product from '../products/Product'
 import '../../styles/style.css'
 
+
 import CircularProgress from 'material-ui/CircularProgress'
 
 class Cart extends Component {
@@ -21,20 +22,20 @@ class Cart extends Component {
     }
   }
   async componentWillReceiveProps(nextProps){
-    
+
     if(!nextProps.data.loading && nextProps.data.user.cart.products){
-      
+
       let products = {}
       nextProps.data.user.cart.products.map(p =>(products[p.product.id] ?
           products[p.product.id].quantity++
           :
           products[p.product.id] = { ...p.product,cart_product_id: p.id, quantity:1 }
       ))
-      
+
       products = Object.values(products)
-      
+
       let subtotal = 0
-      await products.map(p => subtotal = subtotal + (p.price*p.quantity))
+      await products.map(p => subtotal = subtotal + (p.price * p.quantity))
       const tax = await subtotal*.08
       const total = await tax + subtotal
       await this.setState({
@@ -48,18 +49,18 @@ class Cart extends Component {
   render(){
     const {subtotal,tax,total} = this.state
     const {user, loading} = this.props.data
-    
+
+
     return(loading && !user ? <div> Loading <CircularProgress /></div> :
         <div>
           {user.cart.products === 0 ? <div>Cart is Empty!</div> :
             <div>
               <section className="cartImage">
-                
+
                 {this.state.products.map(product => {
                   return <Product cartView={true} product={product} key={product.id}/>
                 })}
               </section>
-              
               <div>
                 <div>Subtotal:${subtotal}</div>
                 <div>Tax:${tax}</div>

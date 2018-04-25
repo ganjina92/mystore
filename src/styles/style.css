@@ -1,6 +1,10 @@
+body {
+  background: blanchedalmond;
+}
 .tile {
   margin: 10px;
   padding: 20px;
+
 }
 .list {
   border-style: solid;
@@ -34,10 +38,11 @@ img {
   margin-right: 5px;
   flex: 1 1 200px;
 }
-.appBar {
-  height: 2cm;
-}
 .createUser {
   display: flex;
   flex-flow: column;
+}
+
+h2 {
+  font-size: 16px;
 }

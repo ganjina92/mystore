@@ -11,7 +11,7 @@ type Query {
 }
 
 type Mutation {
-  createUser(name: String!, email: String!, pw: String!, avatar: String): User
+  createUser(name: String!, email: String!, pw: String!): User
   updateUser(id: ID!, name: String, email: String): User
   createProduct(name: String!,imgURL: String,desc: String!,price: Float!):Product
   updateProduct(id: ID!,name: String,imgURL: String,desc: String,price: Float ):Product

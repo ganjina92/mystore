@@ -16,28 +16,29 @@ class AllProducts extends Component {
       search: ''
     }
   }
-  
+
   render(){
     const {allProducts} = this.props.data
-    
+
     return (!this.props.loading && allProducts ) ? (
       <MuiThemeProvider className='list'>
         <SearchBar
-          onChange={(e) => this.setState({search: e}) }
+          onChange={(e) => this.setState({search: e.toLowerCase()}) }
           onRequestSearch={() => console.log('onRequestSearch')}
           style={{
             margin: '0 auto',
-            minWidth: 200
+            minWidth: 200,
+            border: "10px"
           }}
         />
         <section>
           <GridList cols="4" cellHeight="auto" >
             {allProducts
               .filter(product=> {
-                if(this.state.search === ''){return product}
+                if(this.state.search  === ''){return product}
                 return (
-                  product.price.toString().includes(this.state.search) ||
-                  product.name.includes(this.state.search)
+                  product.price.toString().toLowerCase().includes(this.state.search.toLowerCase()) ||
+                  product.name.toLowerCase().includes(this.state.search.toLowerCase())
                 )
               })
               .map(product =>(

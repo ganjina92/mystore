@@ -8,11 +8,12 @@ class CartButton extends Component {
   render(){
     return(
       <RaisedButton
-        label={this.props.label}
-        onClick={() => {
+         primary='true'
+         label={this.props.label}
+         onClick={() => {
           this.props.mutate()
-          alert('Your cart is Empty')
-          // window.location.replace('/')
+          alert('Your Cart is Cleared!')
+          window.location.replace('/cart')
         }} />
     )
   }

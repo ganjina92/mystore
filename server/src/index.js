@@ -2,6 +2,7 @@ const { GraphQLServer } = require('graphql-yoga')
 const { Prisma } = require('prisma-binding')
 const { auth } = require('./resolvers/auth')
 const { cart } = require('./resolvers/cart')
+// const { paypal } = require('paypal-rest-sdk')
 
 const resolvers = {
   Query: {
@@ -34,10 +35,10 @@ const resolvers = {
         { orderBy: 'price_ASC' }
       , info)
     },
-    
+
     allUsers(parent, {}, ctx, info) {
       return ctx.db.query.users({}, info)
-    
+
   },
     async allProductsInCart(parent, { id }, ctx, info){
       const cart = await ctx.db.query.cart(
@@ -53,7 +54,7 @@ const resolvers = {
     updateUser(parent, { id, name, email, pw }, ctx, info) {
       return ctx.db.mutation.updateUser(
         {
-          data: { name, email, pw },
+          data: { name, email, pw,},
           where: { id }
         },
         info,
@@ -84,6 +85,13 @@ const resolvers = {
     }
   },
 }
+
+// paypal.configure({
+//   'mode': 'sandbox', //sandbox or live
+//   'client_id': 'AUXzTnci3l0EJFgfjeF7B4pOkZOr3zRz6cFrWqKP4sdfiOfyCZJhuXgYDKd0TnZNhk66baxPE3rQHZKu',
+//   'client_secret': 'ENF0T9q8iFOsk0U42F-4nF_5vWa21zuFYE-NEnlYqoSpYHEU6i0RsJdbi9EYAXumeY3aSv1xqgMX0OYh'
+// });
+
 
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',

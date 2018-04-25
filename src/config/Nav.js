@@ -33,7 +33,7 @@ export default class extends Component {
       open: false
     }
   }
-  
+
   render() {
     const toggleOpen = () => {
       console.log('open')
@@ -47,14 +47,14 @@ export default class extends Component {
         <MuiThemeProvider>
           <div className='appBar'>
             <AppBar style={{ backgroundColor: grey700 }}
-                    title="Need a Ride? We Got You Covered"
+                    title="Pending"
                     onLeftIconButtonClick={toggleOpen}/>
             <Drawer open={this.state.open}
                     onRequestChange={toggleOpen}
                     docked={false}
             >
               <MenuItem onClick={() => handleClick('/')}>Home</MenuItem>
-              <MenuItem onClick={() => handleClick('/Product')}>Products</MenuItem>
+              <MenuItem onClick={() => handleClick('/')}>Products</MenuItem>
               <MenuItem onClick={() => handleClick('/Cart')}>Shopping Cart</MenuItem>
               <MenuItem onClick={() => handleClick('/User')}>User</MenuItem>
             </Drawer>

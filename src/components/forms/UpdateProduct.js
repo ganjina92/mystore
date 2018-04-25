@@ -27,14 +27,14 @@ class UpdateProduct extends Component {
           desc: this.state.desc,
           price: this.state.price
         }
-        
+
       })
       window.location.replace('/')
     }
     return (
       <form className='flexBox'
             onSubmit={handleSubmit}>
-        
+
         <h3>Update Product</h3>
         <TextField required floatingLabelText="Name"
                    value={this.state.name}
@@ -47,20 +47,22 @@ class UpdateProduct extends Component {
         <TextField required floatingLabelText="Description"
                    value={this.state.desc}
                    onChange={e => this.setState({ desc: e.target.value})}
-                   
+
         />
         <div>
         <NumberFormat customInput={TextField} thousandSeparator={true} prefix={'$'}
                       value={this.state.price}
-                      onValueChange={e => this.setState({ price: e.target.value})}
-                      min="0.00" step="1000.00" max="30000000.00"/>
-         
+                      onValueChange={e =>
+                        this.setState({ price: e.value})
+                      }
+                      min="0" step="100000" max="3000000000"/>
+
         </div>
         <RaisedButton primary='true'
                       label="Update"
                       type="Submit"
         />
-        
+
       </form>
     );
   }

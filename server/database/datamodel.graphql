@@ -4,7 +4,6 @@ type User {
   email: String! @unique
   pw: String!
   cart: Cart
-  avatar: String
 }
 
 type Cart {

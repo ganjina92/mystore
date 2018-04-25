@@ -1017,7 +1017,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
+babel-runtime@6.26.0, babel-runtime@^6.18.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0, babel-runtime@^6.6.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -3269,6 +3269,10 @@ hoek@2.x.x:
 hoek@4.x.x:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.0.tgz#72d9d0754f7fe25ca2d01ad8f8f9a9449a89526d"
+
+hoist-non-react-statics@^1.0.3:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
 hoist-non-react-statics@^2.2.0, hoist-non-react-statics@^2.3.0:
   version "2.3.1"
@@ -5776,6 +5780,12 @@ react-apollo@2.0.4:
     lodash.pick "^4.4.0"
     prop-types "^15.5.8"
 
+react-async-script-loader@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-async-script-loader/-/react-async-script-loader-0.3.0.tgz#c742b3ca25e08ba61ab7eb64371f814027692b86"
+  dependencies:
+    hoist-non-react-statics "^1.0.3"
+
 react-dev-utils@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-5.0.0.tgz#425ac7c9c40c2603bc4f7ab8836c1406e96bb473"
@@ -5846,6 +5856,14 @@ react-number-format@^3.3.0:
   resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-3.3.0.tgz#e59884075bccd80af6c1f521f2bef2f564cb3e24"
   dependencies:
     prop-types "^15.6.0"
+
+react-paypal-express-checkout@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-paypal-express-checkout/-/react-paypal-express-checkout-1.0.4.tgz#282ccfc8ebfc1ca358193ddce8dba0f09fb6f6fb"
+  dependencies:
+    babel-runtime "^6.6.1"
+    prop-types "^15.5.10"
+    react-async-script-loader "^0.3.0"
 
 react-popper@^0.8.3:
   version "0.8.3"
